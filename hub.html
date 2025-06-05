@@ -56,6 +56,16 @@
       visibility: visible;
       opacity: 1;
     }
+
+    .map-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 <body>
@@ -63,7 +73,7 @@
     <h1>Welcome to the Main Hub!</h1>
     <p>Hover over each title to learn more:</p>
 
-    <div class="section" onclick="alert('Adventure Map coming soon!')">
+    <div class="section" onclick="alert('Adventure Map info!')">
       <h2>🗺️ Adventure Map</h2>
       <div class="tooltip">The map shows your progress. Each section helps you discover something new about yourself.</div>
     </div>
@@ -81,6 +91,18 @@
     <div class="section" onclick="alert('Tips coming soon!')">
       <h2>💡 Tips</h2>
       <div class="tooltip">Need help along the way? Click here for tips and guidance as you go.</div>
+    </div>
+
+    <div class="map-container">
+      <h2>🗺️ Your Map</h2>
+      <img src="adventure-map.png" alt="Adventure Map" usemap="#map-areas" width="800" height="500" />
+      <map name="map-areas">
+        <area shape="rect" coords="100,100,200,180" href="#" alt="Area 1" onclick="alert('Area 1 clicked!'); return false;">
+        <area shape="rect" coords="300,100,400,180" href="#" alt="Area 2" onclick="alert('Area 2 clicked!'); return false;">
+        <area shape="rect" coords="500,100,600,180" href="#" alt="Area 3" onclick="alert('Area 3 clicked!'); return false;">
+        <area shape="rect" coords="200,300,300,380" href="#" alt="Area 4" onclick="alert('Area 4 clicked!'); return false;">
+        <area shape="rect" coords="400,300,500,380" href="#" alt="Area 5" onclick="alert('Area 5 clicked!'); return false;">
+      </map>
     </div>
   </div>
 </body>
