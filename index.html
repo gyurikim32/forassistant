@@ -5,16 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>RENEW - Welcome</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .button-group {
+      margin-top: 30px;
+    }
+    button {
+      margin: 10px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <h1>Hi, Welcome to RENEW</h1>
     <p>Let’s start out by learning more about you.</p>
     <input type="text" id="nameInput" placeholder="What is your name?" />
-    <br/>
-    <button onclick="goToNextPage()">Continue</button>
+    <div class="button-group">
+      <button onclick="goToNextPage()">Start New</button>
+      <button onclick="resumeProgress()">Continue</button>
+    </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    function goToNextPage() {
+      const name = document.getElementById("nameInput").value;
+      if (name) {
+        localStorage.setItem("username", name);
+        localStorage.removeItem("completedArea"); // reset progress if starting new
+        window.location.href = "character.html";
+      } else {
+        alert("Please enter your name!");
+      }
+    }
+
+    function resumeProgress() {
+      const name = localStorage.getItem("username");
+      const area = localStorage.getItem("completedArea");
+
+      if (!name) {
+        alert("No saved progress found. Please enter your name to begin.");
+        return;
+      }
+
+      window.location.href = "hub.html"; // or route to last completed area if preferred
+    }
+  </script>
 </body>
 </html>
