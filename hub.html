@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RENEW Main Hub</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .hub-section {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      border: 2px solid #ccc;
+      padding: 20px;
+      text-align: center;
+      background-color: #fff;
+      transition: box-shadow 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to the Main Hub!</h1>
+    <p>Let's start exploring the different sections:</p>
+
+    <div class="hub-section">
+      <div class="card" onclick="alert('Adventure Map coming soon!')">🗺️ Adventure Map</div>
+      <div class="card" onclick="alert('My Profile coming soon!')">👤 My Profile</div>
+      <div class="card" onclick="alert('Notes coming soon!')">📝 Notes</div>
+      <div class="card" onclick="alert('Tips coming soon!')">💡 Tips</div>
+    </div>
+  </div>
+</body>
+</html>
