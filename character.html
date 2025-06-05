@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Choose Your Character</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .character-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .character {
+      border: 2px solid #ccc;
+      padding: 20px;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .character:hover {
+      transform: scale(1.05);
+      border-color: #00aaff;
+    }
+    .selected {
+      border-color: #00aaff;
+      background-color: #e6f7ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="greeting">Hi!</h1>
+    <p>Now, let’s pick a character to be you on this adventure!</p>
+
+    <div class="character-container">
+      <div class="character" onclick="selectCharacter(this)">🧝‍♂️ Elf</div>
+      <div class="character" onclick="selectCharacter(this)">🧙 Wizard</div>
+      <div class="character" onclick="selectCharacter(this)">🧛 Vampire</div>
+    </div>
+
+    <br/>
+    <button onclick="beginAdventure()">Begin Adventure</button>
+  </div>
+
+  <script>
+    const greeting = document.getElementById("greeting");
+    const username = localStorage.getItem("username") || "Adventurer";
+    greeting.textContent = "Hi " + username + "!";
+
+    let selected = null;
+
+    function selectCharacter(element) {
+      if (selected) {
+        selected.classList.remove("selected");
+      }
+      element.classList.add("selected");
+      selected = element;
+    }
+
+    function beginAdventure() {
+      if (!selected) {
+        alert("Please choose a character!");
+        return;
+      }
+      localStorage.setItem("character", selected.textContent);
+      window.location.href = "hub.html";
+    }
+  </script>
+</body>
+</html>
