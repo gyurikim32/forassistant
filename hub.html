@@ -13,44 +13,54 @@
       padding: 20px;
       margin: 15px auto;
       max-width: 600px;
-      text-align: left;
+      text-align: center;
+      position: relative;
       transition: background-color 0.2s;
     }
     .section:hover {
       background-color: #f0f8ff;
       cursor: pointer;
     }
-    h2 {
-      margin-bottom: 8px;
+
+    .tooltip {
+      display: none;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #333;
     }
-    p {
-      margin: 0;
+
+    .section:hover .tooltip {
+      display: block;
+    }
+
+    h2 {
+      margin-bottom: 0;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Welcome to the Main Hub!</h1>
-    <p>Let me show you around the different sections:</p>
+    <p>Hover over each section to learn more:</p>
 
     <div class="section" onclick="alert('Adventure Map coming soon!')">
       <h2>🗺️ Adventure Map</h2>
-      <p>The map shows your progress. Each section helps you discover something new about yourself.</p>
+      <div class="tooltip">The map shows your progress. Each section helps you discover something new about yourself.</div>
     </div>
 
     <div class="section" onclick="alert('My Profile coming soon!')">
       <h2>👤 My Profile</h2>
-      <p>Your profile is like your story. It shows what makes you uniquely you!</p>
+      <div class="tooltip">Your profile is like your story. It shows what makes you uniquely you!</div>
     </div>
 
     <div class="section" onclick="alert('Notes coming soon!')">
       <h2>📝 Notes</h2>
-      <p>Want to jot things down during your adventure? Head to the Notes section!</p>
+      <div class="tooltip">Want to jot things down during your adventure? Head to the Notes section!</div>
     </div>
 
     <div class="section" onclick="alert('Tips coming soon!')">
       <h2>💡 Tips</h2>
-      <p>Need help along the way? Click here for tips and guidance as you go.</p>
+      <div class="tooltip">Need help along the way? Click here for tips and guidance as you go.</div>
     </div>
   </div>
 </body>
