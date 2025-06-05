@@ -15,33 +15,53 @@
       max-width: 600px;
       text-align: center;
       position: relative;
-      transition: background-color 0.2s;
     }
-    .section:hover {
-      background-color: #f0f8ff;
+
+    .section h2 {
+      margin: 0;
       cursor: pointer;
+      display: inline-block;
+      position: relative;
     }
 
     .tooltip {
-      display: none;
-      margin-top: 10px;
-      font-size: 0.9rem;
-      color: #333;
+      visibility: hidden;
+      opacity: 0;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      text-align: left;
+      border-radius: 8px;
+      padding: 10px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 250px;
+      transition: opacity 0.3s ease;
+      z-index: 1;
     }
 
-    .section:hover .tooltip {
-      display: block;
+    .tooltip::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent rgba(0, 0, 0, 0.75) transparent;
     }
 
-    h2 {
-      margin-bottom: 0;
+    .section h2:hover + .tooltip {
+      visibility: visible;
+      opacity: 1;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Welcome to the Main Hub!</h1>
-    <p>Hover over each section to learn more:</p>
+    <p>Hover over each title to learn more:</p>
 
     <div class="section" onclick="alert('Adventure Map coming soon!')">
       <h2>🗺️ Adventure Map</h2>
