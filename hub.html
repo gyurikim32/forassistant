@@ -6,35 +6,51 @@
   <title>RENEW Main Hub</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .hub-section {
-      margin-top: 30px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      border: 2px solid #ccc;
-      padding: 20px;
-      text-align: center;
+    .section {
       background-color: #fff;
-      transition: box-shadow 0.2s;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 15px auto;
+      max-width: 600px;
+      text-align: left;
+      transition: background-color 0.2s;
     }
-    .card:hover {
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    .section:hover {
+      background-color: #f0f8ff;
       cursor: pointer;
+    }
+    h2 {
+      margin-bottom: 8px;
+    }
+    p {
+      margin: 0;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Welcome to the Main Hub!</h1>
-    <p>Let's start exploring the different sections:</p>
+    <p>Let me show you around the different sections:</p>
 
-    <div class="hub-section">
-      <div class="card" onclick="alert('Adventure Map coming soon!')">🗺️ Adventure Map</div>
-      <div class="card" onclick="alert('My Profile coming soon!')">👤 My Profile</div>
-      <div class="card" onclick="alert('Notes coming soon!')">📝 Notes</div>
-      <div class="card" onclick="alert('Tips coming soon!')">💡 Tips</div>
+    <div class="section" onclick="alert('Adventure Map coming soon!')">
+      <h2>🗺️ Adventure Map</h2>
+      <p>The map shows your progress. Each section helps you discover something new about yourself.</p>
+    </div>
+
+    <div class="section" onclick="alert('My Profile coming soon!')">
+      <h2>👤 My Profile</h2>
+      <p>Your profile is like your story. It shows what makes you uniquely you!</p>
+    </div>
+
+    <div class="section" onclick="alert('Notes coming soon!')">
+      <h2>📝 Notes</h2>
+      <p>Want to jot things down during your adventure? Head to the Notes section!</p>
+    </div>
+
+    <div class="section" onclick="alert('Tips coming soon!')">
+      <h2>💡 Tips</h2>
+      <p>Need help along the way? Click here for tips and guidance as you go.</p>
     </div>
   </div>
 </body>
