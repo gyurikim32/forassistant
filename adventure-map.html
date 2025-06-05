@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adventure Map</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .map-areas {
+      max-width: 600px;
+      margin: 40px auto;
+      display: grid;
+      gap: 20px;
+    }
+
+    .area {
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      background-color: #f9f9f9;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.2s, box-shadow 0.2s;
+    }
+
+    .area:hover {
+      background-color: #e6f7ff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🗺️ Adventure Map</h1>
+    <p>Select an area to explore:</p>
+
+    <div class="map-areas">
+      <div class="area" onclick="alert('Entering Area 1...')">Area 1</div>
+      <div class="area" onclick="alert('Entering Area 2...')">Area 2</div>
+      <div class="area" onclick="alert('Entering Area 3...')">Area 3</div>
+      <div class="area" onclick="alert('Entering Area 4...')">Area 4</div>
+      <div class="area" onclick="alert('Entering Area 5...')">Area 5</div>
+    </div>
+  </div>
+</body>
+</html>
