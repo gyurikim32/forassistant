@@ -5,6 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>RENEW Main Hub</title>
   <link rel="stylesheet" href="style.css" />
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
+    import { getDatabase, ref, update } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBwwokbuWpCq2HiR4CkJkKnzFMPj_oNvSc",
+      authDomain: "practice-fa88b.firebaseapp.com",
+      projectId: "practice-fa88b",
+      storageBucket: "practice-fa88b.firebasestorage.app",
+      messagingSenderId: "177443421892",
+      appId: "1:177443421892:web:52935aebfe679a06ba5391"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const username = localStorage.getItem("username");
+
+    if (username) {
+      update(ref(db, 'users/' + username), {
+        progress: 'hub'
+      });
+    }
+  </script>
   <style>
     .section {
       background-color: #fff;
