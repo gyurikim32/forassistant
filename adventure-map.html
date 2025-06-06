@@ -28,6 +28,34 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
   </style>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
+    import { getDatabase, ref, update } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBwwokbuWpCq2HiR4CkJkKnzFMPj_oNvSc",
+      authDomain: "practice-fa88b.firebaseapp.com",
+      projectId: "practice-fa88b",
+      storageBucket: "practice-fa88b.firebasestorage.app",
+      messagingSenderId: "177443421892",
+      appId: "1:177443421892:web:52935aebfe679a06ba5391"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const username = localStorage.getItem("username");
+
+    window.markAreaComplete = function(areaId) {
+      if (username) {
+        update(ref(db, 'users/' + username + '/areas'), {
+          [areaId]: 'complete'
+        });
+        alert(`Marked ${areaId} as complete!`);
+      } else {
+        alert("No user found.");
+      }
+    };
+  </script>
 </head>
 <body>
   <div class="container">
@@ -35,12 +63,13 @@
     <p>Select an area to explore:</p>
 
     <div class="map-areas">
-      <div class="area" onclick="alert('Entering Area 1...')">Area 1</div>
-      <div class="area" onclick="alert('Entering Area 2...')">Area 2</div>
-      <div class="area" onclick="alert('Entering Area 3...')">Area 3</div>
-      <div class="area" onclick="alert('Entering Area 4...')">Area 4</div>
-      <div class="area" onclick="alert('Entering Area 5...')">Area 5</div>
+      <div class="area" onclick="markAreaComplete('area1')">Area 1</div>
+      <div class="area" onclick="markAreaComplete('area2')">Area 2</div>
+      <div class="area" onclick="markAreaComplete('area3')">Area 3</div>
+      <div class="area" onclick="markAreaComplete('area4')">Area 4</div>
+      <div class="area" onclick="markAreaComplete('area5')">Area 5</div>
     </div>
+
     <p><a href="hub.html" style="display: inline-block; margin-top: 30px;">🔙 Return to Main Hub</a></p>
   </div>
 </body>
