@@ -45,6 +45,13 @@
     const db = getDatabase(app);
     const username = localStorage.getItem("username");
 
+    // Set progress to adventure-map on page load
+    if (username) {
+      update(ref(db, 'users/' + username), {
+        progress: 'adventure-map'
+      });
+    }
+
     window.markAreaComplete = function(areaId) {
       if (username) {
         update(ref(db, 'users/' + username + '/areas'), {
