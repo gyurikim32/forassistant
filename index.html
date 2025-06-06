@@ -15,7 +15,7 @@
   </style>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
-    import { getDatabase, ref, get, set, child } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-database.js";
+    import { getDatabase, ref, get, update, child } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-database.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyBwwokbuWpCq2HiR4CkJkKnzFMPj_oNvSc",
@@ -36,13 +36,19 @@
         return;
       }
 
-      // Save user to Firebase
-      await set(ref(db, 'users/' + name), {
-        progress: 'character'
-      });
+      const userRef = ref(db, 'users/' + name);
+      const snapshot = await get(userRef);
 
-      localStorage.setItem("username", name);
-      window.location.href = "character.html";
+      if (snapshot.exists()) {
+        alert("User already exists! Please use the 'Continue' button to resume.");
+      } else {
+        // Create a new user entry without wiping any existing data
+        await update(userRef, {
+          progress: 'character'
+        });
+        localStorage.setItem("username", name);
+        window.location.href = "character.html";
+      }
     }
 
     window.resumeProgress = async function() {
