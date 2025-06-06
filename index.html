@@ -13,6 +13,54 @@
       margin: 10px;
     }
   </style>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
+    import { getDatabase, ref, get, set, child } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBwwokbuWpCq2HiR4CkJkKnzFMPj_oNvSc",
+      authDomain: "practice-fa88b.firebaseapp.com",
+      projectId: "practice-fa88b",
+      storageBucket: "practice-fa88b.firebasestorage.app",
+      messagingSenderId: "177443421892",
+      appId: "1:177443421892:web:52935aebfe679a06ba5391"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    window.goToNextPage = async function() {
+      const name = document.getElementById("nameInput").value.trim();
+      if (!name) {
+        alert("Please enter your name!");
+        return;
+      }
+
+      // Save user to Firebase
+      await set(ref(db, 'users/' + name), {
+        progress: 'character'
+      });
+
+      localStorage.setItem("username", name);
+      window.location.href = "character.html";
+    }
+
+    window.resumeProgress = async function() {
+      const name = document.getElementById("nameInput").value.trim();
+      if (!name) {
+        alert("Please enter your name to resume.");
+        return;
+      }
+
+      const snapshot = await get(child(ref(db), 'users/' + name));
+      if (snapshot.exists()) {
+        localStorage.setItem("username", name);
+        window.location.href = "hub.html";
+      } else {
+        alert("No saved progress found for this name.");
+      }
+    }
+  </script>
 </head>
 <body>
   <div class="container">
@@ -24,30 +72,5 @@
       <button onclick="resumeProgress()">Continue</button>
     </div>
   </div>
-
-  <script>
-    function goToNextPage() {
-      const name = document.getElementById("nameInput").value;
-      if (name) {
-        localStorage.setItem("username", name);
-        localStorage.removeItem("completedArea"); // reset progress if starting new
-        window.location.href = "character.html";
-      } else {
-        alert("Please enter your name!");
-      }
-    }
-
-    function resumeProgress() {
-      const name = localStorage.getItem("username");
-      const area = localStorage.getItem("completedArea");
-
-      if (!name) {
-        alert("No saved progress found. Please enter your name to begin.");
-        return;
-      }
-
-      window.location.href = "hub.html"; // or route to last completed area if preferred
-    }
-  </script>
 </body>
 </html>
